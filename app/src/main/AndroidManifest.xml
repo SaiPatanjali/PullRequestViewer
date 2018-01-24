@@ -3,6 +3,8 @@
     package="com.example.sai.prviewer">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".PRViewer"
@@ -26,6 +28,9 @@
         <activity android:name=".view.PullRequestActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+        <receiver android:name=".receiver.NetworkChangeReceiver" >
+        </receiver>
     </application>
 
 </manifest>

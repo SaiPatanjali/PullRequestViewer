@@ -27,6 +27,7 @@ public class PullRequestViewModel extends Observable {
     public ObservableInt progressBarVisibility = new ObservableInt(View.GONE);
     public ObservableInt messageVisibility = new ObservableInt(View.GONE);
     public ObservableInt listVisibility = new ObservableInt(View.GONE);
+    public ObservableField<String> messageText = new ObservableField<>();
 
     private List<PullRequest> pullRequestList = new ArrayList<>();
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -35,7 +36,7 @@ public class PullRequestViewModel extends Observable {
         this.context = context;
     }
 
-    public void fetchPullRequests(String repoName) {
+    public void fetchPullRequests(final String repoName) {
         progressBarVisibility.set(View.VISIBLE);
         messageVisibility.set(View.GONE);
         listVisibility.set(View.GONE);
@@ -50,7 +51,6 @@ public class PullRequestViewModel extends Observable {
                 .subscribe(new Consumer<List<PullRequest>>() {
                     @Override
                     public void accept(List<PullRequest> pullRequests) throws Exception {
-                        Log.e("success", String.valueOf(pullRequests));
                         progressBarVisibility.set(View.GONE);
                         messageVisibility.set(View.GONE);
                         listVisibility.set(View.VISIBLE);
@@ -60,6 +60,7 @@ public class PullRequestViewModel extends Observable {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         Log.e("error", throwable.getMessage());
+                        messageText.set("repository " + repoName + "\ndoes not exist or is private");
                         progressBarVisibility.set(View.GONE);
                         messageVisibility.set(View.VISIBLE);
                         listVisibility.set(View.GONE);

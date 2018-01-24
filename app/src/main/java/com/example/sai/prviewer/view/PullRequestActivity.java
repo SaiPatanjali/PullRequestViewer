@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.sai.prviewer.R;
 import com.example.sai.prviewer.databinding.PullRequestActivityBinding;
@@ -14,13 +15,11 @@ import com.example.sai.prviewer.viewmodel.PullRequestDetailViewModel;
 
 public class PullRequestActivity extends AppCompatActivity {
 
-    private PullRequestActivityBinding pullRequestActivityBinding;
-    private PullRequestDetailViewModel pullRequestDetailViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pullRequestActivityBinding = DataBindingUtil.setContentView(this, R.layout.pull_request_activity);
+        PullRequestActivityBinding pullRequestActivityBinding = DataBindingUtil
+                .setContentView(this, R.layout.pull_request_activity);
 
         setSupportActionBar(pullRequestActivityBinding.toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -29,7 +28,7 @@ public class PullRequestActivity extends AppCompatActivity {
         }
 
         PullRequest pullRequest = (PullRequest) getIntent().getSerializableExtra("pull_request");
-        pullRequestDetailViewModel = new PullRequestDetailViewModel(pullRequest);
+        PullRequestDetailViewModel pullRequestDetailViewModel = new PullRequestDetailViewModel(pullRequest);
         pullRequestActivityBinding.setPullRequestDetailViewModel(pullRequestDetailViewModel);
     }
 
@@ -37,5 +36,13 @@ public class PullRequestActivity extends AppCompatActivity {
         Intent intent = new Intent(context, PullRequestActivity.class);
         intent.putExtra("pull_request", pullRequest);
         return intent;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

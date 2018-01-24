@@ -6,6 +6,7 @@ import android.content.Context;
 import com.example.sai.prviewer.data.PullRequestFactory;
 import com.example.sai.prviewer.data.PullRequestService;
 
+
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
 
@@ -34,13 +35,5 @@ public class PRViewer extends Application {
             scheduler = Schedulers.io();
         }
         return scheduler;
-    }
-
-    public void setPullRequestService(PullRequestService pullRequestService) {
-        this.pullRequestService = pullRequestService;
-    }
-
-    public void setScheduler(Scheduler scheduler) {
-        this.scheduler = scheduler;
     }
 }
