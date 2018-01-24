@@ -11,7 +11,6 @@ import com.example.sai.prviewer.databinding.ItemPullRequestBinding;
 import com.example.sai.prviewer.model.PullRequest;
 import com.example.sai.prviewer.viewmodel.PullRequestItemViewModel;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,7 +19,7 @@ public class PullRequestAdapter extends RecyclerView.Adapter<PullRequestAdapter.
     private List<PullRequest> pullRequestArrayList;
     private Context context;
 
-    public PullRequestAdapter(Context context) {
+    PullRequestAdapter(Context context) {
         this.context = context;
         this.pullRequestArrayList = Collections.emptyList();
     }
@@ -43,21 +42,21 @@ public class PullRequestAdapter extends RecyclerView.Adapter<PullRequestAdapter.
         return pullRequestArrayList.size();
     }
 
-    public void setPullRequestArrayList(List<PullRequest> pullRequestArrayList) {
+    void setPullRequestArrayList(List<PullRequest> pullRequestArrayList) {
         this.pullRequestArrayList = pullRequestArrayList;
         notifyDataSetChanged();
     }
 
-    public static class PullRequestViewHolder extends RecyclerView.ViewHolder {
+    static class PullRequestViewHolder extends RecyclerView.ViewHolder {
 
         ItemPullRequestBinding itemPullRequestBinding;
 
-        public PullRequestViewHolder(ItemPullRequestBinding itemPullRequestBinding) {
+        PullRequestViewHolder(ItemPullRequestBinding itemPullRequestBinding) {
             super(itemPullRequestBinding.itemPullRequest);
             this.itemPullRequestBinding = itemPullRequestBinding;
         }
 
-        public void bindPullRequest(Context context, PullRequest pullRequest) {
+        void bindPullRequest(Context context, PullRequest pullRequest) {
             if(itemPullRequestBinding.getPullRequestItemViewModel() == null) {
                 itemPullRequestBinding.setPullRequestItemViewModel(new PullRequestItemViewModel(context, pullRequest));
             } else {

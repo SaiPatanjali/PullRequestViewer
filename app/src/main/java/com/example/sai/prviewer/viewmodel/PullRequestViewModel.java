@@ -27,7 +27,7 @@ public class PullRequestViewModel extends Observable {
     public ObservableInt progressBarVisibility = new ObservableInt(View.GONE);
     public ObservableInt messageVisibility = new ObservableInt(View.GONE);
     public ObservableInt listVisibility = new ObservableInt(View.GONE);
-    public ObservableField<String> messageText = new ObservableField<>();
+    public ObservableField<String> messageText = new ObservableField<>("");
 
     private List<PullRequest> pullRequestList = new ArrayList<>();
     private CompositeDisposable compositeDisposable = new CompositeDisposable();

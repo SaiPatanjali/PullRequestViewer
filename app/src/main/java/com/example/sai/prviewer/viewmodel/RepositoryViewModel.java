@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,13 +24,15 @@ import java.util.Observable;
 
 public class RepositoryViewModel extends Observable{
 
-    public ObservableField<String> repoName = new ObservableField<>();
+    public ObservableField<String> repoName = new ObservableField<>("");
     private TextInputLayout repoNameTIL;
     private EditText repoNameET;
     public ObservableInt internetConnected = new ObservableInt(View.GONE);
+    private Context context;
 
     @SuppressLint("ClickableViewAccessibility")
     public RepositoryViewModel(Context context) {
+        this.context = context;
         setInternetConnected(NetworkChangeReceiver.isConnected(context));
         repoNameET = ((Activity) context).findViewById(R.id.repo_name_et);
         repoNameTIL = ((Activity) context).findViewById(R.id.repo_name_til);
@@ -56,9 +59,7 @@ public class RepositoryViewModel extends Observable{
                         String[] names = name.split("/");
                         if(names.length > 1) {
                             if (names[0].length() > 0 && names[1].length() > 0) {
-                                repoNameTIL.setErrorEnabled(false);
-                                onSubmit();
-                                return false;
+                                return onSubmit();
                             }
                         }
                     }
@@ -87,9 +88,15 @@ public class RepositoryViewModel extends Observable{
         return repoName.get();
     }
 
-    private void onSubmit() {
+    private boolean onSubmit() {
+        repoNameTIL.setErrorEnabled(false);
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(repoNameET.getWindowToken(), 0);
+        }
         setChanged();
         notifyObservers();
+        return false;
     }
 
     public void setInternetConnected(boolean connected) {

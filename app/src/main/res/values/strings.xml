@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PR Viewer</string>
     <string name="loading_repositories">Add new repositories</string>
+    <string name="offline_message">You are offline! Please connect using Mobile data or Wi-Fi</string>
+    <string name="input_hint">:owner_name/:repo_name</string>
+    <string name="credits">Developed by Sai Patanjali</string>
 </resources>

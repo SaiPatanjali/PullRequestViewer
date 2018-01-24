@@ -6,9 +6,6 @@ import android.widget.ImageView;
 import com.example.sai.prviewer.model.PullRequest;
 import com.squareup.picasso.Picasso;
 
-/**
- * Created by sai on 24/01/18.
- */
 
 public class PullRequestDetailViewModel {
 

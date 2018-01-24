@@ -12,10 +12,10 @@
         android:id="@+id/item_pull_request"
         android:layout_width="match_parent"
         android:background="@color/white"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="15dp"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingBottom="@dimen/spacing_large"
+        android:paddingStart="@dimen/spacing_medium"
+        android:paddingEnd="@dimen/spacing_large"
         android:gravity="center"
         android:onClick="@{pullRequestItemViewModel::onItemClick}"
         android:orientation="horizontal"
@@ -23,15 +23,16 @@
 
         <ImageView
             android:src="@drawable/pull_request"
-            android:layout_width="20dp"
-            android:layout_margin="5dp"
-            android:layout_height="20dp" />
+            android:layout_width="@dimen/spacing_huge"
+            android:layout_margin="@dimen/spacing_small"
+            android:contentDescription="@string/app_name"
+            android:layout_height="@dimen/spacing_huge" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="@dimen/spacing_medium"
+            android:layout_marginRight="@dimen/spacing_medium"
             android:orientation="vertical">
 
             <TextView
@@ -39,13 +40,13 @@
                 android:layout_width="match_parent"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="14sp"
+                android:textSize="@dimen/letter_small"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:text="@{pullRequestItemViewModel.description}"
                 android:layout_width="match_parent"
-                android:textSize="11sp"
+                android:textSize="@dimen/letter_xsmall"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
