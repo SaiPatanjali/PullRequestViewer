@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="pullRequestItemViewModel"
+            type="com.example.sai.prviewer.viewmodel.PullRequestItemViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/item_pull_request"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="15dp"
+        android:gravity="center"
+        android:onClick="@{pullRequestItemViewModel::onItemClick}"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/pull_request"
+            android:layout_width="20dp"
+            android:layout_margin="5dp"
+            android:layout_height="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="@{pullRequestItemViewModel.title}"
+                android:layout_width="match_parent"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@{pullRequestItemViewModel.description}"
+                android:layout_width="match_parent"
+                android:textSize="11sp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
