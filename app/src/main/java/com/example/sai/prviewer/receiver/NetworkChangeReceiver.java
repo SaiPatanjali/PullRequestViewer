@@ -12,6 +12,8 @@ public class NetworkChangeReceiver extends BroadcastReceiver {
 
     private NetworkConnection connection;
 
+    public NetworkChangeReceiver() {}
+
     public NetworkChangeReceiver(NetworkConnection connection) {
         this.connection = connection;
     }

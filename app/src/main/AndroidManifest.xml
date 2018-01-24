@@ -29,8 +29,6 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <receiver android:name=".receiver.NetworkChangeReceiver" >
-        </receiver>
     </application>
 
 </manifest>
